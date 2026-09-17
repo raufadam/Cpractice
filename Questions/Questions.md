@@ -47,4 +47,44 @@ Exercise:
 
         Important: calculate the array length inside main() and pass it to the function. Do not
         use sizeof inside the function to determine the length.
-                                                                                                                                                                                                                                                                                                                                                        
+
+
+
+( C Practice 3: Reading bytes through a pointer )
+
+Todays reinforces Practice 2 while introducing only one major idea: pointer-based array traversal.
+
+When an array is passed to a function, the function recieves the address of its first element.
+A pointer can move throught that memory one element at a time. This is fundamental when examining
+file buffers, packet contents, and memory during defensive analysis.
+
+Exercise:
+        Create a reusable function that counts how many times a target byte appears, just like 
+        Practice 2, but this time:
+        
+        - Receive the data throught a pointer.
+        - Read each byte using pointer dereferencing and pointer arithmetic.
+        - Do 'not' use array indexing such as data[i] inside the function.
+        - Recieve the buffer lenght and target byte as separate parameters.
+        - Return the count to main().
+        - Calculate the number of elements in main().
+        - Print the returned result from main().
+
+        Use this test data:
+            
+            uint8_t buffer[] = {
+                0x48, 0xCC, 0x31, 0xCC,
+                0xC0, 0x90, 0xCC, 0xC3
+            };
+
+Search for 0xCC.
+
+  Pointer hint:
+              adding an ofset to the data pointer produces the address of that element;
+              dereferencing that address reads the byte stored there.
+
+Compile with the usual flags. GOOD LUCK!!!
+
+ 
+
+        
