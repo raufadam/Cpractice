@@ -50,7 +50,7 @@ Exercise:
 
 
 
-( C Practice 3: Reading bytes through a pointer )
+( C Practice 3: Reading bytes through a pointer ) [ COMPLETED ]
 
 Todays reinforces Practice 2 while introducing only one major idea: pointer-based array traversal.
 
