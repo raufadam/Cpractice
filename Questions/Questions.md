@@ -85,6 +85,22 @@ Search for 0xCC.
 
 Compile with the usual flags. GOOD LUCK!!!
 
- 
 
-        
+
+( C Pratice 4: Printable bytes in a buffer )
+
+A binary file can contain readable text mixed eith other bytes. A 'pritable ASCII byte' has a value
+from 0x20 through 0x7E, inclusive. A 0x00 bytes is not printable, but it does 'not' mean you should
+stop examining a binary buffer.
+
+Execrise:
+        Write a function that recieves a buffer and its length, then returns how many bytes are
+        printable ASCII. Calculate the length in main() and print the returned count there. You 
+        may use array indexing this time.
+
+            uint8_t buffer[] = {
+                0x48, 0x69, 0x00, 0x21,
+                0xFF, 0x20, 0x7E, 0x0A
+            };
+
+        Check every byte, including those after 0x00. Compile with your usual warnig flags.
