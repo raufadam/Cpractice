@@ -1,4 +1,4 @@
-( C Practice 1: Variables, Arrays and Loops ) [ COMPLETED ]
+( C Practice 1: Variables, Arrays and Loops ) [ COMPLETED (1)]
 
 Malware analysts often inspect files as raw bytes. In C, uint8_t represents one unsigned bytes
 with values from 0 to 255. An array stores several such values together, while a loop lets you 
@@ -20,7 +20,7 @@ Exercise:
 
 
 
-( C Practice 2: Functions and bytes matching ) [ COMPLETED ]
+( C Practice 2: Functions and bytes matching ) [ COMPLETED (2)]
 
 In defensive analysis, you often need to search raw data for a particular byte. A reusable function
 is better than rewriting the same loop each time.
@@ -50,7 +50,7 @@ Exercise:
 
 
 
-( C Practice 3: Reading bytes through a pointer ) [ COMPLETED ]
+( C Practice 3: Reading bytes through a pointer ) [ COMPLETED (3) ]
 
 Todays reinforces Practice 2 while introducing only one major idea: pointer-based array traversal.
 
@@ -87,7 +87,7 @@ Compile with the usual flags. GOOD LUCK!!!
 
 
 
-( C Pratice 4: Printable bytes in a buffer )
+( C Pratice 4: Printable bytes in a buffer ) [ COMPLETED (4) ]
 
 A binary file can contain readable text mixed eith other bytes. A 'pritable ASCII byte' has a value
 from 0x20 through 0x7E, inclusive. A 0x00 bytes is not printable, but it does 'not' mean you should
@@ -104,3 +104,34 @@ Execrise:
             };
 
         Check every byte, including those after 0x00. Compile with your usual warnig flags.
+
+
+
+( CPractice 5: Find the longest printable sequence ) [ COMPLETED (5) ]
+
+Defensive analysts often search binanry data for consecutive printable characters because they may
+reveal filename, commands, URLs, or other readable clues.
+
+Exercise:
+        Examine this byte buffer:
+            
+            uint8_t buffer[] = {
+                0x00, 0x48, 0x65, 0x6C, 0x6C, 0x6F,
+                0x90, 0x41, 0x42, 0x43, 0x21,
+                0x20, 0x58, 0x00
+            };
+
+Write one function: 
+    - That Receives the buffer and it's length.
+    - That Uses a loop to examine every byte.
+    - That Treats bytes from 0x20 throught 0x7E as printable.
+    - That Finds the length of the 'longest uninterrupted sequence' of printable bytes.
+    - That Returns that length as a size_t.
+    - That Does not print from inside the function.
+
+In main(),- calculate the buffer length with sizeof, - call the function, and - print its returned 
+result using %zu.
+
+Think about keeping two counters:
+    - One for the printable sequence currently being examined.
+    - One for the longest sequence encountered so far.
