@@ -135,3 +135,36 @@ result using %zu.
 Think about keeping two counters:
     - One for the printable sequence currently being examined.
     - One for the longest sequence encountered so far.
+
+
+
+( C Practice 6: Safely locate a two-byte signature )
+
+Executable-file analysis often begins by checking for identifying byte sequences. The bytes 0x4D
+0x5A form the MZ signature associated with Windows PE files, althought finding them alone does not 
+prove that data is executable or malacious.
+
+Exercise:
+        Examine this buffer:
+            
+            uint8_t buffer[] = {
+                0x90, 0x00, 0x41, 0x4D,
+                0x5A, 0x10, 0xFF, 0xC3
+            };
+
+Write one function:
+    - That Receives the buffer and its length.
+    - That Searches for two consecutive bytes: 0x4D followed immediately by 0x5A.
+    - That Returns the array index where the signature begins.
+    - That Returns the buffer length if the signature isn't found.
+    - That Never accesses memory beyond the buffer.
+    - That Does not print from inside the function.
+
+In main():
+    - Calculate the length using sizeof.
+    - Call the function.
+    - Print the signature's starting index if found.
+    - Otherwise, print that it wasn't found.
+
+Be especially careful with buffer[i + 1]:
+    your loop must stop before that expression could go beyond the array.
